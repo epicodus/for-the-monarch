@@ -1,7 +1,7 @@
-# :crown: For The King!
+# :crown: For The Monarch!
 This project is for the [Ruby Database Basics assessment](http://www.learnhowtoprogram.com/lessons/database-basics-assessment) at [Epicodus](http://www.epicodus.com/).
 
-**For The King!** is a battle-management system built for a King (that's you!).  The system allows the user to manage Knights and send them to fight in Provinces of your choosing.
+**For The Monarch!** is a battle-management system built for a Monarch (that's you!).  The system allows the user to manage Knights and send them to fight in Provinces of your choosing.
 
 
 ## Installation
