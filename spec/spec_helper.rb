@@ -3,7 +3,7 @@ require 'pg'
 require 'pry'
 require 'knight'
 require 'province'
-require 'theater'
+require 'campaign'
 
 DB = PG.connect({:dbname => 'knight_test'})
 
