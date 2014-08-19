@@ -32,5 +32,11 @@ describe 'Knight' do
       new_knight.save
       expect(Knight.all).to eq [new_knight]
     end
+    
+    it 'adds an id' do
+      new_knight = Knight.new({:name => 'Sir Heckingbottom'})
+      new_knight.save
+      expect(Knight.all[0].id).to eq new_knight.id
+    end
   end
 end
