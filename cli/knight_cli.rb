@@ -28,7 +28,7 @@ def menu_knights
   puts "These Knights will fight & die for your Honor: "
   whitespace
   list_knights
-  puts "C > View campaigns for a Knight"
+  puts "C > View campaigns for a Knight."
   puts "E > Execute a Knight."
   puts "M > Return to Main Menu."
   whitespace

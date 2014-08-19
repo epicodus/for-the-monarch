@@ -28,15 +28,15 @@ def main_menu_ctrls
   whitespace
   puts "        N > Conscript a new Knight."
   puts "        K > Show Knights in service."
-  puts "        E > Execute a Knight."
+  puts "        X > To Exit."
 
   case gets.chomp.upcase
   when 'N'
     add_knight
   when 'K'
     menu_knights
-  when 'E'
-    delete_knight
+  when 'X'
+    exit
   end
 
   whitespace
