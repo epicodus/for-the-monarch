@@ -28,6 +28,8 @@ def main_menu_ctrls
   whitespace
   puts "        N > Conscript a new Knight."
   puts "        K > Show Knights in service."
+  puts "        P > Add a new Province to the map."
+  puts "        S > Show all Provinces."
   puts "        X > To Exit."
 
   case gets.chomp.upcase
@@ -35,6 +37,10 @@ def main_menu_ctrls
     add_knight
   when 'K'
     menu_knights
+  when 'P'
+    add_province
+  when 'S'
+    menu_provinces
   when 'X'
     exit
   end
