@@ -3,6 +3,7 @@ require 'pg'
 require 'pry'
 require 'knight'
 require 'campaign'
+require 'theater'
 
 DB = PG.connect({:dbname => 'knight_test'})
 
@@ -11,5 +12,6 @@ RSpec.configure do |config|
   config.before(:each) do
     DB.exec("DELETE FROM knights *;")
     DB.exec("DELETE FROM campaigns *;")
+    DB.exec("DELETE FROM theaters *;")
   end
 end

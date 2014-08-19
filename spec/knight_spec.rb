@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe 'Knight' do
   it 'initializes with a hash' do
     new_knight = Knight.new({:name => 'Sir Lancelot'})
