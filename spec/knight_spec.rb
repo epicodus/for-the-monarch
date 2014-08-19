@@ -47,5 +47,14 @@ describe 'Knight' do
       new_knight.remove
       expect(Knight.all).to eq []
     end
+    
+    it 'only deletes the knight remove is called on' do
+      new_knight1 = Knight.new({:name => 'Sir Reginald Clutterbuck'})
+      new_knight1.save
+      new_knight2 = Knight.new({:name => 'Sir Heckingbottom'})
+      new_knight2.save
+      new_knight1.remove
+      expect(Knight.all).to eq [new_knight2]
+    end
   end
 end
