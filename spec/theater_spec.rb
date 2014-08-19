@@ -10,4 +10,9 @@ describe 'Theater' do
     new_theater = Theater.new({:knight_id => 1, :campaign_id => 3})
     expect(new_theater.knight_id).to eq 1
   end
+  
+  it 'lets you read campaign id' do
+    new_theater = Theater.new({:knight_id => 1, :campaign_id => 3})
+    expect(new_theater.campaign_id).to eq 3
+  end
 end
