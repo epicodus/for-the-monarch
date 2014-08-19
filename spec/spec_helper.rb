@@ -2,7 +2,7 @@ require 'rspec'
 require 'pg'
 require 'pry'
 require 'knight'
-require 'campaign'
+require 'province'
 require 'theater'
 
 DB = PG.connect({:dbname => 'knight_test'})

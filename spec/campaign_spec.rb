@@ -2,66 +2,31 @@ require 'spec_helper'
 
 describe 'Campaign' do
   it 'initializes with a hash' do
-    new_campaign = Campaign.new({:name => 'Lowbuck Province'})
+    new_campaign = Campaign.new({:knight_id => 1, :campaign_id => 3})
     expect(new_campaign).to be_an_instance_of Campaign
   end
-  
-  it 'lets you read the name' do
-    new_campaign = Campaign.new({:name => 'Lowbuck Province'})
-    expect(new_campaign.name).to eq 'Lowbuck Province'
+
+  it 'lets you read knight id' do
+    new_campaign = Campaign.new({:knight_id => 1, :campaign_id => 3})
+    expect(new_campaign.knight_id).to eq 1
   end
-  
+
+  it 'lets you read campaign id' do
+    new_campaign = Campaign.new({:knight_id => 1, :campaign_id => 3})
+    expect(new_campaign.campaign_id).to eq 3
+  end
+
   describe '.all' do
     it 'starts as an empty array' do
       expect(Campaign.all).to eq []
     end
-    
-    it 'returns all campaignss' do
-      new_campaigns1 = Campaign.new({:name => 'Lowbuck Province'})
-      new_campaigns2 = Campaign.new({:name => 'Castle Blackrock'})
-      new_campaigns1.save
-      new_campaigns2.save
-      expect(Campaign.all).to eq [new_campaigns1, new_campaigns2]
-    end
-  end
-  
-  describe '.find' do
-    it 'returns a campaign when given an id' do
-      new_campaign = Campaign.new({:name => 'Greenhaven'})
-      new_campaign.save
-      expect(Campaign.find(new_campaign.id)).to eq new_campaign
-    end
-  end
-  
-  describe 'save' do
-    it 'saves a campaign' do
-      new_campaign = Campaign.new({:name => 'Castle Blackrock'})
-      new_campaign.save
-      expect(Campaign.all).to eq [new_campaign]
-    end
-    
-    it 'adds an id' do
-      new_campaign = Campaign.new({:name => 'Castle Blackrock'})
-      new_campaign.save
-      expect(Campaign.all[0].id).to eq new_campaign.id
-    end
-  end
-  
-  describe 'remove' do
-    it 'deletes a campaign' do
-      new_campaign = Campaign.new({:name => 'Castle Blackrock'})
-      new_campaign.save
-      new_campaign.remove
-      expect(Campaign.all).to eq []
-    end
-    
-    it 'only deletes the campaign remove is called on' do
-      new_campaign1 = Campaign.new({:name => 'Frozen Fjord'})
+
+    it 'returns all knights' do
+      new_campaign1 = Campaign.new({:knight_id => 1, :campaign_id => 3})
+      new_campaign2 = Campaign.new({:knight_id => 5, :campaign_id => 3})
       new_campaign1.save
-      new_campaign2 = Campaign.new({:name => 'Splinter Hill'})
       new_campaign2.save
-      new_campaign1.remove
-      expect(Campaign.all).to eq [new_campaign2]
+      expect(Campaign.all).to eq [new_campaign1, new_campaign2]
     end
   end
 end

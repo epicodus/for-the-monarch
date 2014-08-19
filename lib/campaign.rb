@@ -1,48 +1,33 @@
 class Campaign
-  
-  attr_reader :id, :name
-  
+
+  attr_reader :id, :knight_id, :campaign_id
+
   def initialize attributes
     @id = attributes[:id]
-    @name = attributes[:name]
+    @knight_id = attributes[:knight_id]
+    @campaign_id = attributes[:campaign_id]
   end
-  
+
   def self.all
     campaigns = []
     results = DB.exec("SELECT * FROM campaigns;")
     results.each do |result|
       attributes = {
         :id => result['id'].to_i,
-        :name => result['name']
+        :knight_id => result['knight_id'].to_i,
+        :campaign_id => result['campaign_id'].to_i
       }
       campaigns << Campaign.new(attributes)
     end
     campaigns
   end
-  
-  def self.find id
-    campaign = []
-    results = DB.exec("SELECT * FROM campaigns WHERE id = #{id};")
-    results.each do |result|
-      attributes = {
-        :id => result['id'].to_i,
-        :name => result['name']
-      }
-      campaign << Campaign.new(attributes)
-    end
-    campaign[0]
-  end
-  
+
   def save
-    result = DB.exec("INSERT INTO campaigns (name) VALUES ('#{name}') RETURNING id;")
+    result = DB.exec("INSERT INTO campaigns (knight_id, campaign_id) VALUES (#{knight_id}, #{campaign_id}) RETURNING id;")
     @id = result.first['id'].to_i
   end
-  
-  def remove
-    DB.exec("DELETE FROM campaigns WHERE id = #{id}")
-  end
-  
+
   def == arg
-    self.name == arg.name && self.id == arg.id
+    self.knight_id == arg.knight_id && self.campaign_id == arg.campaign_id && self.id == arg.id
   end
 end
