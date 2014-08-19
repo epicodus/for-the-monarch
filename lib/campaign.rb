@@ -20,6 +20,19 @@ class Campaign
     campaigns
   end
   
+  def self.find id
+    campaign = []
+    results = DB.exec("SELECT * FROM campaigns WHERE id = #{id};")
+    results.each do |result|
+      attributes = {
+        :id => result['id'].to_i,
+        :name => result['name']
+      }
+      campaign << Campaign.new(attributes)
+    end
+    campaign[0]
+  end
+  
   def save
     result = DB.exec("INSERT INTO campaigns (name) VALUES ('#{name}') RETURNING id;")
     @id = result.first['id'].to_i

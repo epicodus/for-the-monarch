@@ -25,6 +25,14 @@ describe 'Campaign' do
     end
   end
   
+  describe '.find' do
+    it 'returns a campaign when given an id' do
+      new_campaign = Campaign.new({:name => 'Greenhaven'})
+      new_campaign.save
+      expect(Campaign.find(new_campaign.id)).to eq new_campaign
+    end
+  end
+  
   describe 'save' do
     it 'saves a campaign' do
       new_campaign = Campaign.new({:name => 'Castle Blackrock'})
