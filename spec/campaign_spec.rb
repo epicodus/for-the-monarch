@@ -15,6 +15,14 @@ describe 'Campaign' do
     it 'starts as an empty array' do
       expect(Campaign.all).to eq []
     end
+    
+    it 'returns all campaignss' do
+      new_campaigns1 = Campaign.new({:name => 'Lowbuck Province'})
+      new_campaigns2 = Campaign.new({:name => 'Castle Blackrock'})
+      new_campaigns1.save
+      new_campaigns2.save
+      expect(Campaign.all).to eq [new_campaigns1, new_campaigns2]
+    end
   end
   
   describe 'save' do
