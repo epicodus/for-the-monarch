@@ -30,6 +30,8 @@ def main_menu_ctrls
   puts "        K > Show Knights in service."
   puts "        P > Add a new Province to the map."
   puts "        S > Show all Provinces."
+  puts "        C > Start a new Campaign."
+  puts "        L > Show all Campaigns."
   puts "        X > To Exit."
 
   case gets.chomp.upcase
@@ -41,6 +43,10 @@ def main_menu_ctrls
     add_province
   when 'S'
     menu_provinces
+  when 'C'
+    add_campaign
+  when 'L'
+    menu_campaigns
   when 'X'
     exit
   end

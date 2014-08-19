@@ -11,12 +11,15 @@ def add_campaign
   puts "Where do you wish to send one of your loyal Knights?"
   whitespace
   province = Province.find(gets.chomp.to_i)
-  Province.new({:name => name}).save
-  sleep 2
   whitespace
-  puts "Ah, I shall update our maps accordingly..."
+  list_knights
+  puts "And which Knight shall you trust with this?"
+  knight = Knight.find(gets.chomp.to_i)
+  whitespace
+  Campaign.new({:knight_id => knight.id, :province_id => province.id}).save
   sleep 2
-  puts "'#{name}' will soon know Divinity and Grace under your rule!"
+  puts knight.name + " shall bring your Victory in " + province.name + "."
+  puts "(Campaign created)"
   sleep 3
   main_menu
 end

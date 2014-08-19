@@ -9,7 +9,8 @@ def add_province
   puts "What is the name of this Province?"
   whitespace
   name = gets.chomp
-  Province.new({:name => name}).save
+  province = Province.new({:name => name})
+  province.save
   sleep 2
   whitespace
   puts "Ah, I shall update our maps accordingly..."

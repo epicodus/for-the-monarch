@@ -5,7 +5,7 @@ class Province
   def initialize attributes
     @id = attributes[:id]
     @name = attributes[:name]
-    @type = set_type
+    @type = attributes[:type]
   end
 
   def self.all
@@ -55,11 +55,12 @@ class Province
   def set_type
     biomes = ["Desert", "Farmland", "Forest", "Mountains", "Hills", "Hinterland", "City", "Marsh"]
     num = rand(7)
-    biomes[num]
+    @type = biomes[num]
   end
 
   def save
-    result = DB.exec("INSERT INTO provinces (name) VALUES ('#{name}') RETURNING id;")
+    self.set_type
+    result = DB.exec("INSERT INTO provinces (name, type) VALUES ('#{name}', '#{type}') RETURNING id;")
     @id = result.first['id'].to_i
   end
 
