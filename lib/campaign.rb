@@ -9,5 +9,14 @@ class Campaign
   
   def self.all
     campaigns = []
+    results = DB.exec("SELECT * FROM campaigns;")
+    results.each do |result|
+      attributes = {
+        :id => result['id'].to_i,
+        :name => result['name']
+      }
+      campaigns << Campaign.new(attributes)
+    end
+    campaigns
   end
 end
