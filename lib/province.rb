@@ -36,6 +36,22 @@ class Province
     province[0]
   end
 
+  def knights
+    knights = []
+    results = DB.exec("SELECT knights.* FROM provinces
+              JOIN campaigns on (provinces.id = campaigns.province_id)
+              JOIN knights on (campaigns.knight_id = knights.id)
+              WHERE provinces.id = #{id};")
+    results.each do |result|
+      attributes = {
+        :id => result['id'].to_i,
+        :name => result['name']
+      }
+      knights << Knight.new(attributes)
+    end
+    knights
+  end
+
   def set_type
     biomes = ["Desert", "Farmland", "Forest", "Mountains", "Hills", "Hinterland", "City", "Marsh"]
     num = rand(7)

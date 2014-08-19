@@ -69,4 +69,22 @@ describe 'Province' do
       expect(Province.all).to eq [new_province2]
     end
   end
+
+  describe 'knights' do
+    it 'shows which knights are assigned to a province' do
+      new_knight1 = Knight.new({:name => 'Sir Reginald Clutterbuck'})
+      new_knight1.save
+      new_knight2 = Knight.new({:name => 'Sir Heckingbottom'})
+      new_knight2.save
+      new_knight3 = Knight.new({:name => 'Sir Lancelot'})
+      new_knight3.save
+      new_province = Province.new({:name => 'Castle Blackrock'})
+      new_province.save
+      new_campaign1 = Campaign.new({:knight_id => new_knight1.id, :province_id => new_province.id})
+      new_campaign1.save
+      new_campaign2 = Campaign.new({:knight_id => new_knight2.id, :province_id => new_province.id})
+      new_campaign2.save
+      expect(new_province.knights).to eq [new_knight1, new_knight2]
+    end
+  end
 end
