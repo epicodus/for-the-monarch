@@ -18,4 +18,9 @@ class Knight
     end
     knights
   end
+  
+  def save
+    result = DB.exec("INSERT INTO knights (name) VALUES ('#{name}') RETURNING id;")
+    @id = result.first['id'].to_i
+  end
 end

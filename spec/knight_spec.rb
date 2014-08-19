@@ -17,4 +17,12 @@ describe 'Knight' do
       expect(Knight.all).to eq []
     end
   end
+  
+  describe 'save' do
+    it 'saves a knight' do
+      new_knight = Knight.new({:name => 'Sir Heckingbottom'})
+      new_knight.save
+      expect(Knight.all).to eq [new_knight]
+    end
+  end
 end
