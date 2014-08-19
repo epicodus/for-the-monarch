@@ -1,6 +1,6 @@
 class Theater
   
-  attr_reader :id, :name
+  attr_reader :id, :knight_id, :campaign_id
   
   def initialize attributes
     @id = attributes[:id]
