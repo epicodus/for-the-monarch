@@ -34,7 +34,7 @@ def main_menu_ctrls
   when 'N'
     add_knight
   when 'K'
-    list_knights
+    menu_knights
   when 'E'
     delete_knight
   end

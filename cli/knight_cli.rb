@@ -19,22 +19,77 @@ def add_knight
   puts "A raven has been dispatched..."
   sleep 2
   puts "'#{name}' will now fight for your glory oh Divine Ruler!"
-  sleep 2
+  sleep 3
   main_menu
 end
 
-def list_knights
+def menu_knights
+  header
+  puts "These Knights will fight & die for your Honor: "
+  whitespace
+  list_knights
+  puts "C > View campaigns for a Knight"
+  puts "E > Execute a Knight."
+  puts "M > Return to Main Menu."
+  whitespace
+  case gets.chomp.upcase
+  when 'C'
+    list_knight_campaigns
+  when 'E'
+    delete_knight
+  when 'M'
+    main_menu
+  end
+end
 
+def list_knights
+  puts "            Knights"
+  puts "          ==========="
+  whitespace
+  Knight.all.each do |knight|
+    puts "       " + knight.id.to_s + " - " + knight.name
+  end
+  whitespace
 end
 
 def list_knight_campaigns
-
-end
-
-def find_knight
-
+  header
+  list_knights
+  puts "Enter the number of a Knight to view their campaigns:"
+  whitespace
+  knight = Knight.find(gets.chomp.to_i)
+  whitespace
+  puts "          " + knight.name + "'s campaigns:"
+  puts "          ===================================="
+  whitespace
+  knight.campaigns.each do |result|
+    puts result.name + " | " + result.type
+  end
+  whitespace
+  puts "K > Return to Knights Menu."
+  puts "M > Return to Main Menu."
+  case gets.chomp.upcase
+  when 'K'
+    menu_knights
+  when 'M'
+    main_menu
+  end
 end
 
 def delete_knight
-
+  header
+  list_knights
+  puts "Has one of your Knights committed treason?"
+  sleep 2
+  puts "Or worse...besmirched thy glorious name?"
+  sleep 2
+  puts "Enter the number of this treachorous Knight,"
+  puts "and they will be dealt with:"
+  knight = Knight.find(gets.chomp.to_i)
+  knight.remove
+  sleep 2
+  puts "The sentence will be carried out my Liege."
+  puts "(Knight deleted)"
+  sleep 2
+  menu_knights
 end
