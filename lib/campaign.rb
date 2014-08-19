@@ -1,11 +1,11 @@
 class Campaign
 
-  attr_reader :id, :knight_id, :campaign_id
+  attr_reader :id, :knight_id, :province_id
 
   def initialize attributes
     @id = attributes[:id]
     @knight_id = attributes[:knight_id]
-    @campaign_id = attributes[:campaign_id]
+    @province_id = attributes[:province_id]
   end
 
   def self.all
@@ -15,7 +15,7 @@ class Campaign
       attributes = {
         :id => result['id'].to_i,
         :knight_id => result['knight_id'].to_i,
-        :campaign_id => result['campaign_id'].to_i
+        :province_id => result['province_id'].to_i
       }
       campaigns << Campaign.new(attributes)
     end
@@ -23,11 +23,11 @@ class Campaign
   end
 
   def save
-    result = DB.exec("INSERT INTO campaigns (knight_id, campaign_id) VALUES (#{knight_id}, #{campaign_id}) RETURNING id;")
+    result = DB.exec("INSERT INTO campaigns (knight_id, province_id) VALUES (#{knight_id}, #{province_id}) RETURNING id;")
     @id = result.first['id'].to_i
   end
 
   def == arg
-    self.knight_id == arg.knight_id && self.campaign_id == arg.campaign_id && self.id == arg.id
+    self.knight_id == arg.knight_id && self.province_id == arg.province_id && self.id == arg.id
   end
 end
