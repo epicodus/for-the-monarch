@@ -5,7 +5,7 @@ require 'knight'
 require 'province'
 require 'campaign'
 
-DB = PG.connect({:dbname => 'knight_test'})
+DB = PG.connect({:dbname => 'for_the_monarch_test'})
 
 RSpec.configure do |config|
   config.formatter = 'doc'

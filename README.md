@@ -1,30 +1,102 @@
 # :crown: For The Monarch!
 This project is for the [Ruby Database Basics assessment](http://www.learnhowtoprogram.com/lessons/database-basics-assessment) at [Epicodus](http://www.epicodus.com/).
 
-**For The Monarch!** is a battle-management system built for a Monarch (that's you!).  The system allows the user to manage Knights and send them to fight in Provinces of your choosing.
+**For The Monarch!** is a campaign-management system built for a Monarch (that's you!).  The system allows the user to manage Knights and send them to fight in Provinces of your choosing.
 
 
 ## Installation
 
-wip
+First ensure that you have the latest stable version of [Ruby](https://www.ruby-lang.org/en/) and [PostgreSQL](http://www.postgresql.org/) installed.
+
+Download the zip of this repository or clone it via git by executing this command in your terminal:
+
+```
+git clone https://github.com/erjohnson/for-the-monarch.git
+```
+
+Navigate to the **For The Monarch!** project directory in your terminal:
+
+```
+cd $SOME_PATH/for-the-monarch
+```
+
+Once all the required project dependencies are installed and databases created you can start the app by running this command from the `for-the-monarch` directory:
+
+```
+ruby for_the_monarch.rb
+```
 
 
-### Library & Dependencies
+### Dependencies
 
-wip
+In your terminal you can execute these commands to get the appropriate dependency:
+
+`gem install pg` to install PG, a library for interfacing with Postgres in Ruby.
+
+`gem install rspec` to install RSpec, a testing tool for Ruby.
+
+`gem install pry` to install Pry, a runtime developer console & alternative to IRB.
+
+Note that rspec & pry are not required to run the app itself but are required to run the included tests.
 
 
 ### Setting up the Database
 
-wip
+With Postgres installed open another terminal window. Start Postgres (visit the official [PostgreSQL](http://www.postgresql.org/) site if you have trouble installing or starting the database) and then access it by entering `psql` into your terminal.
+
+If you've accessed Postgres, the terminal prompt should look a bit like:
+
+```
+some_name=#
+```
+
+You can enter `\l` to get a list of all your databases.
+
+Next create the **For The Monarch!** database with:
+(don't forget to include `;` at the end of your commands!)
+
+```
+CREATE DATABASE for_the_monarch;
+```
+
+Once the `for_the_monarch` database has been created, connect to it by entering:
+
+```
+\c for_the_monarch
+```
+
+When you're connected the terminal prompt should look a bit like:
+
+```
+for_the_monarch=#
+```
+
+Now create tables for each of the classes:
+
+```
+CREATE TABLE knights (id serial PRIMARY KEY, name varchar);
+
+CREATE TABLE provinces (id serial PRIMARY KEY, name varchar, type varchar);
+
+CREATE TABLE campaigns (id serial PRIMARY KEY, knight_id int, province_id int);
+```
+
+That should do it! For testing, the test database can be created by running:
+
+```
+CREATE DATABASE for_the_monarch_test;
+```
+
+And creating the above tables.
 
 
 ## Dependencies
 
-* [Ruby](https://www.ruby-lang.org/en/)
-* [RSpec](http://rspec.info/)
-* [PRY](http://pryrepl.org/)
-* [PG](http://deveiate.org/code/pg/PGconn.html)
+* [Ruby](https://www.ruby-lang.org/en/): The Ruby Programming language.
+* [PostgreSQL](http://www.postgresql.org/): Object-relational database.
+* [PG](http://deveiate.org/code/pg/PGconn.html): Gem for interfacing with a PostgreSQL database.
+* [RSpec](http://rspec.info/): Ruby testing library.
+* [PRY](http://pryrepl.org/): Alternative REPL with useful features for debugging.
 
 
 ## Author
