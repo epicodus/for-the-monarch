@@ -46,5 +46,14 @@ describe 'Campaign' do
       new_campaign.remove
       expect(Campaign.all).to eq []
     end
+    
+    it 'only deletes the campaign remove is called on' do
+      new_campaign1 = Campaign.new({:name => 'Frozen Fjord'})
+      new_campaign1.save
+      new_campaign2 = Campaign.new({:name => 'Splinter Hill'})
+      new_campaign2.save
+      new_campaign1.remove
+      expect(Campaign.all).to eq [new_campaign2]
+    end
   end
 end
