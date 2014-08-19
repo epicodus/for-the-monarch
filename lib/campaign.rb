@@ -27,6 +27,10 @@ class Campaign
     @id = result.first['id'].to_i
   end
 
+  def remove
+    DB.exec("DELETE FROM campaigns WHERE id = #{id}")
+  end
+
   def == arg
     self.knight_id == arg.knight_id && self.province_id == arg.province_id && self.id == arg.id
   end

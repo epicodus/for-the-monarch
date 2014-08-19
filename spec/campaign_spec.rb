@@ -29,4 +29,22 @@ describe 'Campaign' do
       expect(Campaign.all).to eq [new_campaign1, new_campaign2]
     end
   end
+
+  describe 'remove' do
+    it 'deletes a campaign' do
+      new_campaign = Campaign.new({:knight_id => 1, :province_id => 3})
+      new_campaign.save
+      new_campaign.remove
+      expect(Campaign.all).to eq []
+    end
+
+    it 'only deletes the campaign remove is called on' do
+      new_campaign1 = Campaign.new({:knight_id => 1, :province_id => 3})
+      new_campaign1.save
+      new_campaign2 = Campaign.new({:knight_id => 5, :province_id => 2})
+      new_campaign2.save
+      new_campaign1.remove
+      expect(Campaign.all).to eq [new_campaign2]
+    end
+  end
 end
