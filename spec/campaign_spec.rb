@@ -10,4 +10,10 @@ describe 'Campaign' do
     new_campaign = Campaign.new({:name => 'Lowbuck Province'})
     expect(new_campaign.name).to eq 'Lowbuck Province'
   end
+  
+  describe '.all' do
+    it 'starts as an empty array' do
+      expect(Campaign.all).to eq []
+    end
+  end
 end

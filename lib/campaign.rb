@@ -6,4 +6,8 @@ class Campaign
     @id = attributes[:id]
     @name = attributes[:name]
   end
+  
+  def self.all
+    campaigns = []
+  end
 end
