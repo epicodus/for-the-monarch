@@ -30,6 +30,20 @@ describe 'Campaign' do
     end
   end
 
+  describe 'save' do
+    it 'saves a campaign' do
+      new_campaign = Campaign.new({:knight_id => 1, :province_id => 3})
+      new_campaign.save
+      expect(Campaign.all).to eq [new_campaign]
+    end
+
+    it 'adds an id' do
+      new_campaign = Campaign.new({:knight_id => 1, :province_id => 3})
+      new_campaign.save
+      expect(Campaign.all[0].id).to eq new_campaign.id
+    end
+  end
+
   describe 'remove' do
     it 'deletes a campaign' do
       new_campaign = Campaign.new({:knight_id => 1, :province_id => 3})
