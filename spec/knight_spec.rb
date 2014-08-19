@@ -16,6 +16,14 @@ describe 'Knight' do
     it 'starts as an empty array' do
       expect(Knight.all).to eq []
     end
+    
+    it 'returns all knights' do
+      new_knight1 = Knight.new({:name => 'Sir Heckingbottom'})
+      new_knight2 = Knight.new({:name => 'Sir Lancelot'})
+      new_knight1.save
+      new_knight2.save
+      expect(Knight.all).to eq [new_knight1, new_knight2]
+    end
   end
   
   describe 'save' do
