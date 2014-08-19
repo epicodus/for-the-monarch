@@ -8,5 +8,14 @@ class Knight
   
   def self.all
     knights = []
+    results = DB.exec("SELECT * FROM knights;")
+    results.each do |result|
+      attributes = {
+        :id => result['id'].to_i,
+        :name => result['name']
+      }
+      knights << Knight.new(attributes)
+    end
+    knights
   end
 end
