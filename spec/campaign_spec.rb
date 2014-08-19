@@ -31,5 +31,11 @@ describe 'Campaign' do
       new_campaign.save
       expect(Campaign.all).to eq [new_campaign]
     end
+    
+    it 'adds an id' do
+      new_campaign = Campaign.new({:name => 'Castle Blackrock'})
+      new_campaign.save
+      expect(Campaign.all[0].id).to eq new_campaign.id
+    end
   end
 end
