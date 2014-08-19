@@ -2,7 +2,7 @@ def add_province
   header
   puts "Greetings oh Illustrious Monarch!"
   sleep 1
-  puts "Have thine eyes seen a Province you desire?"
+  puts "Have thine eyes seen a desirable Province?"
   sleep 2
   whitespace
   sleep 1.5
