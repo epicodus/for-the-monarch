@@ -19,4 +19,9 @@ class Campaign
     end
     campaigns
   end
+  
+  def save
+    result = DB.exec("INSERT INTO campaigns (name) VALUES ('#{name}') RETURNING id;")
+    @id = result.first['id'].to_i
+  end
 end

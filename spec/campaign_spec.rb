@@ -16,4 +16,12 @@ describe 'Campaign' do
       expect(Campaign.all).to eq []
     end
   end
+  
+  describe 'save' do
+    it 'saves a campaign' do
+      new_campaign = Campaign.new({:name => 'Castle Blackrock'})
+      new_campaign.save
+      expect(Campaign.all).to eq [new_campaign]
+    end
+  end
 end
