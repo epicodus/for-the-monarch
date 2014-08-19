@@ -14,12 +14,12 @@ end
 
 def header
   system 'clear'
-  puts "            For The Monarch!"
+  puts "    For The Monarch!"
   puts "
-                 _.+._
-               (^\\/^\\/^)
-                \\@*@*@/
-                {_____}
+         _.+._
+       (^\\/^\\/^)
+        \\@*@*@/
+        {_____}
   "
 end
 
