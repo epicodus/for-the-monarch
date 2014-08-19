@@ -23,4 +23,8 @@ class Knight
     result = DB.exec("INSERT INTO knights (name) VALUES ('#{name}') RETURNING id;")
     @id = result.first['id'].to_i
   end
+  
+  def == arg
+    self.name == arg.name && self.id == arg.id
+  end
 end
