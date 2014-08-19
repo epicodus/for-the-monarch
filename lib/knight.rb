@@ -5,4 +5,8 @@ class Knight
     @id = attributes[:id]
     @name = attributes[:name]
   end
+  
+  def self.all
+    knights = []
+  end
 end

@@ -11,4 +11,10 @@ describe 'Knight' do
     new_knight = Knight.new({:name => 'Sir Lancelot'})
     expect(new_knight.name).to eq 'Sir Lancelot'
   end
+  
+  describe '.all' do
+    it 'starts as an empty array' do
+      expect(Knight.all).to eq []
+    end
+  end
 end
