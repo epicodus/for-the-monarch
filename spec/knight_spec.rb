@@ -26,6 +26,14 @@ describe 'Knight' do
     end
   end
   
+  describe '.find' do
+    it 'returns a knight when given an id' do
+      new_knight = Knight.new({:name => 'Sir Heckingbottom'})
+      new_knight.save
+      expect(Knight.find(new_knight.id)).to eq new_knight
+    end
+  end
+  
   describe 'save' do
     it 'saves a knight' do
       new_knight = Knight.new({:name => 'Sir Heckingbottom'})

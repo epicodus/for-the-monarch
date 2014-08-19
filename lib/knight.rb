@@ -19,6 +19,19 @@ class Knight
     knights
   end
   
+  def self.find id
+    knight = []
+    results = DB.exec("SELECT * FROM knights WHERE id = #{id};")
+    results.each do |result|
+      attributes = {
+        :id => result['id'].to_i,
+        :name => result['name']
+      }
+      knight << Knight.new(attributes)
+    end
+    knight[0]
+  end
+  
   def save
     result = DB.exec("INSERT INTO knights (name) VALUES ('#{name}') RETURNING id;")
     @id = result.first['id'].to_i
