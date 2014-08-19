@@ -38,4 +38,13 @@ describe 'Campaign' do
       expect(Campaign.all[0].id).to eq new_campaign.id
     end
   end
+  
+  describe 'remove' do
+    it 'deletes a campaign' do
+      new_campaign = Campaign.new({:name => 'Castle Blackrock'})
+      new_campaign.save
+      new_campaign.remove
+      expect(Campaign.all).to eq []
+    end
+  end
 end
