@@ -39,4 +39,13 @@ describe 'Knight' do
       expect(Knight.all[0].id).to eq new_knight.id
     end
   end
+  
+  describe 'remove' do
+    it 'deletes a knight' do
+      new_knight = Knight.new({:name => 'Sir Reginald Clutterbuck'})
+      new_knight.save
+      new_knight.remove
+      expect(Knight.all).to eq []
+    end
+  end
 end
