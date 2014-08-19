@@ -11,6 +11,11 @@ describe 'Province' do
     expect(new_province.name).to eq 'Lowbuck Province'
   end
 
+  it 'has a biome type' do
+    new_province = Province.new({:name => 'Lowbuck Province'})
+    expect(new_province.type).to_not be nil
+  end
+
   describe '.all' do
     it 'starts as an empty array' do
       expect(Province.all).to eq []

@@ -1,10 +1,11 @@
 class Province
 
-  attr_reader :id, :name
+  attr_reader :id, :name, :type
 
   def initialize attributes
     @id = attributes[:id]
     @name = attributes[:name]
+    @type = set_type
   end
 
   def self.all
@@ -13,7 +14,8 @@ class Province
     results.each do |result|
       attributes = {
         :id => result['id'].to_i,
-        :name => result['name']
+        :name => result['name'],
+        :type => result['type']
       }
       provinces << Province.new(attributes)
     end
@@ -26,11 +28,18 @@ class Province
     results.each do |result|
       attributes = {
         :id => result['id'].to_i,
-        :name => result['name']
+        :name => result['name'],
+        :type => result['type']
       }
       province << Province.new(attributes)
     end
     province[0]
+  end
+
+  def set_type
+    biomes = ["Desert", "Farmland", "Forest", "Mountains", "Hills", "Hinterland", "City", "Marsh"]
+    num = rand(7)
+    biomes[num]
   end
 
   def save
